@@ -1,3 +1,4 @@
+const { string } = require('joi');
 const mongoose = require('mongoose');
 
 const reviewSchema = new mongoose.Schema({
@@ -7,6 +8,10 @@ const reviewSchema = new mongoose.Schema({
     required: true,
   },
   user: {
+    type: String,
+    required: true,
+  },
+  username: {
     type: String,
     required: true,
     trim: true,
@@ -31,4 +36,5 @@ const reviewSchema = new mongoose.Schema({
 reviewSchema.index({ product: 1 });
 
 
-module.exports = mongoose.model('Review', reviewSchema);
+const Review = mongoose.model('Review', reviewSchema);
+module.exports = Review;
