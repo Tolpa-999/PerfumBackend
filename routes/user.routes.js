@@ -7,26 +7,25 @@ const verifyToken = require('../middlewares/verifyToken');
 const { authLimiter } = require('../middlewares/rateLimiter');
 
 
-userRoute.route('/')
+// userRoute.route('/')
     // hint : get all users in trying testing stage
     // .get(verifyToken, userController.getAllUsers)
-    .get(userController.getAllUsers)
+    // .get(userController.getAllUsers)
 
 userRoute.route('/register')
-    .post( userController.register)
+    .post(authLimiter, userController.register)
 
 userRoute.route('/verify-email')
-    .post(userController.verifyEmail)
+    .post(authLimiter, userController.verifyEmail)
 
 userRoute.route('/login')
-    // .post(authLimiter, userController.login)
-    .post(userController.login)
+    .post(authLimiter, userController.login)
 
 // reset password
 userRoute.route('/reset-pass-req')
-    .post( userController.reset_password_request)
+    .post(authLimiter, verifyToken, userController.reset_password_request)
 userRoute.route('/reset-pass')
-    .post( userController.reset_password)
+    .post(authLimiter, verifyToken, userController.reset_password)
 
 
 

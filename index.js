@@ -31,8 +31,8 @@ app.use(cookieParser());
 app.use(express.json());
 
 
-// app.use(securityHeaders);
-// app.use(mongoSanitize());
+app.use(securityHeaders);
+app.use(mongoSanitize());
 
 const productRoutes = require("./routes/products.routes")
 const reviewRoutes = require("./routes/review.routes")
