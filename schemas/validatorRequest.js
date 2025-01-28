@@ -48,7 +48,7 @@ const schemas = {
 module.exports = (schemaName, body) => {
     const { error } = schemas[schemaName].validate(body);
     if (error) {
-        console.log(error)
+        // console.log(error)
         return appError.create(error.details[0].message, 400, httpStatus.FAIL)
     };
     return true;

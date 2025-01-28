@@ -15,7 +15,7 @@ const verifyToken = asyncWrapper( async (req, res, next) => {
         if (err) {
             return res.status(401).send({ err: err.message, message: 'invalid token' })
         }
-        console.log('decoded ================', decoded)
+        // console.log('decoded ================', decoded)
         req.username = decoded.username
         req.userId = decoded.userId
         next()

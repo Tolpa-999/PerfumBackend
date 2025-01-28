@@ -415,9 +415,9 @@ const refreshToken = asyncWrapper(async (req, res, next) => {
         // token is valid send new access token
         const accessToken = await generateJWT({ userId: decoded.userId, email: decoded.email, username: decoded.username}, '15m')
 
-        console.log('decoded =========', decoded)
+        // console.log('decoded =========', decoded)
 
-        console.log('accessToken ================', accessToken)
+        // console.log('accessToken ================', accessToken)
 
         const user = await Users.findOne({ _id: decoded.userId }, { __v: 0, password: 0, refreshTokens: 0 });
 

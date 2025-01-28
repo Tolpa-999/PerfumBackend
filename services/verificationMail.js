@@ -21,10 +21,10 @@ const sendVerificationMail = async (email, title, token) => {
 
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            console.log(`Error in sending email => ${error?.message || error}`);
+            // console.log(`Error in sending email => ${error?.message || error}`);
             throw new Error(`Error in sending email => ${error?.message || error}`);
         } else {
-            console.log("Email sent: " + info.response);
+            // console.log("Email sent: " + info.response);
         }
     });
 }
