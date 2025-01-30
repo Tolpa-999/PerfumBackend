@@ -128,7 +128,7 @@ const register = asyncWrapper(async (req, res, next) => {
           await sendVerificationMail(
               existingUser.email,
               "Email Verification Resent",
-              `http://localhost:5173/verify-email?token=${verificationToken}`
+              `https://perfumeni.vercel.app/verify-email?token=${verificationToken}`
           );
       } catch (error) {
           console.log("Email sending error:", error);
