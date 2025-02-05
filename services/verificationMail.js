@@ -44,9 +44,33 @@ const sendVerificationMail = async (email, title, token) => {
       address: process.env.EMAIL_FROM
     },
     to: email,
-    subject: title,
-    html: `Click <a href="${token}">here</a> to ${title}.`,
-    priority: 'high'
+    subject: `${title} - Perfumeni Account Security`, 
+    text: `Please verify your email by clicking: <a href="${token}">here</a> \n\nIf you didn't request this, ignore this email.`,
+    html: `
+      <div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif;">
+        <h2 style="color: #2d3748;">Perfumeni Account Security</h2>
+        <p>Please click the button below to ${title}:</p>
+        <a href="${token}" 
+           style="display: inline-block; padding: 12px 24px; 
+                  background-color: #4299e1; color: white; 
+                  text-decoration: none; border-radius: 4px;
+                  margin: 20px 0;">
+          Verify Email Address
+        </a>
+        <p style="color: #718096; font-size: 14px;">
+          If you didn't request this email, you can safely ignore it.
+        </p>
+        <hr style="border: 1px solid #e2e8f0; margin: 24px 0;">
+        <div style="text-align: center; color: #718096; font-size: 12px;">
+          <p>Perfumeni Inc, 123 Perfume Street, Paris, France</p>
+          <p><a href="${process.env.BASE_URL}/unsubscribe" style="color: #4299e1;">Unsubscribe</a></p>
+        </div>
+      </div>
+    `,
+    priority: 'high',
+    headers: {
+      'X-Entity-Ref-ID': 'perfumeni-verification-1'
+    }
   };
 
   // Retry configuration (3 attempts with exponential backoff)
