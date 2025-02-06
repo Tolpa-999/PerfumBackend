@@ -133,5 +133,5 @@ const getProduct = asyncWrapper(async (req, res, next) => {
 module.exports = {
   getAllProducts,
   getProduct,
-  addProduct,
+  // addProduct,
 };
