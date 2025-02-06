@@ -8,7 +8,7 @@ const productRoutes = express.Router()
 
 productRoutes.route('/')
     .get(controllers.getAllProducts)
-    .post(controllers.addProduct)
+    // .post(controllers.addProduct)
 
 productRoutes.route('/:productId')
     .get(controllers.getProduct)

@@ -106,29 +106,29 @@ const getProduct = asyncWrapper(async (req, res, next) => {
 });
 
 // Add a new product
-const addProduct = asyncWrapper(async (req, res, next) => {
-  const errors = validationResult(req);
+// const addProduct = asyncWrapper(async (req, res, next) => {
+//   const errors = validationResult(req);
 
-  if (!errors.isEmpty()) {
-    return next(appError.create("Invalid data provided", 400, httpStatus.FAIL));
-  }
+//   if (!errors.isEmpty()) {
+//     return next(appError.create("Invalid data provided", 400, httpStatus.FAIL));
+//   }
 
-  const { name, price, category } = req.body;
+//   const { name, price, category } = req.body;
 
-  // Example validation for required fields
-  if (!name || !price || !category) {
-    return next(appError.create("Missing required fields (name, price, category)", 400, httpStatus.FAIL));
-  }
+//   // Example validation for required fields
+//   if (!name || !price || !category) {
+//     return next(appError.create("Missing required fields (name, price, category)", 400, httpStatus.FAIL));
+//   }
 
-  const product = await Product.create(req.body);
+//   const product = await Product.create(req.body);
 
-  res.status(201).json({
-    status: httpStatus.SUCCESS,
-    message: "Product added successfully",
-    data: product,
-  });
+//   res.status(201).json({
+//     status: httpStatus.SUCCESS,
+//     message: "Product added successfully",
+//     data: product,
+//   });
 
-});
+// });
 
 module.exports = {
   getAllProducts,

@@ -13,13 +13,13 @@ const { authLimiter } = require('../middlewares/rateLimiter');
     // .get(userController.getAllUsers)
 
 userRoute.route('/register')
-    .post(userController.register)
+    .post(authLimiter, userController.register)
 
 userRoute.route('/verify-email')
-    .post( userController.verifyEmail)
+    .post(authLimiter, userController.verifyEmail)
 
 userRoute.route('/login')
-    .post(userController.login)
+    .post(authLimiter, userController.login)
 
 // reset password
 userRoute.route('/reset-pass-req')
@@ -30,10 +30,10 @@ userRoute.route('/reset-pass')
 
 
 userRoute.route('/refresh')
-    .get(userController.refreshToken)
+    .get(authLimiter, userController.refreshToken)
 
 userRoute.route('/logout')
-    .get(userController.logout)
+    .get(authLimiter, userController.logout)
 
 userRoute.route('/invalidate-sessions')
     .post(userController.invalidateSessions);
